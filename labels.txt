@@ -1,0 +1,47 @@
+Afghanistan AF
+Armenia AM
+Azerbaijan AZ
+Bahrain BH
+Bangladesh BD
+Bhutan BT
+Brunei BN
+Cambodia KH
+China CN
+Georgia GE
+Hong Kong HK
+India IN
+Indonesia ID
+Iran IR
+Iraq IQ
+Israel IL
+Japan JP
+Jordan JO
+Kazakhstan KZ
+North Korea KP
+South Korea KR
+Kuwait KW
+Kyrgyzstan KG
+Laos LA
+Lebanon LB
+Macau MO
+Malaysia MY
+Maldives MV
+Mongolia MN
+Myanmar MM
+Nepal NP
+Oman OM
+Pakistan PK
+Philippines PH
+Qatar QA
+Saudi Arabia SA
+Singapore SG
+Sri Lanka LK
+Syria SY
+Tajikistan TJ
+Thailand TH
+Turkey TR
+Turkmenistan TM
+United arab emirates AE
+Uzbekistan UZ
+Vietnam VN
+Yemen YE

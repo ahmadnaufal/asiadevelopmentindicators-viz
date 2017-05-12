@@ -68,6 +68,32 @@ var get_data_indicator_year = function(indicator_code, year) {
     return year_value;
 }
 
+var get_country_indicator_data = function(country_code, indicator_code) {
+    // indicator parameters are codes
+    var new_obj = obj[indicator_code];
+
+    // container to append the results
+    var res = [];
+
+    for (var i = 0; i < new_obj.length; i++) {
+        var cur_year = new_obj[i]['year'];
+        for (var j = 0; j < new_obj[i]['values'].length; j++) {
+            if (new_obj[i]['values'][j]['id'] == country_code) {
+                var value = new_obj[i]['values'][j].value;
+                break;
+            }
+        }
+
+        // append the result to the container
+        res.push({
+            year : cur_year,
+            value : value
+        });
+    }
+
+    return res;
+}
+
 var map_country_name_to_codes = function(country_name) {
 	var country_code = "";
 

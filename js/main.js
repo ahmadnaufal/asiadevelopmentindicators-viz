@@ -1,7 +1,9 @@
+var obj = {};
+
 var load_file = function(directory) {
     var indicator_codes = []; // instantiated with all country codes
 
-    var obj = {};
+    obj = {};
 
     for (var idx = 0; idx < filenames.length; idx++) {
         var indicator_file = directory + "/" + indicator_codes[idx] + ".csv";
@@ -51,8 +53,19 @@ var load_file = function(directory) {
     }
 }
 
-var get_data_indicator_year = function(indicator, year) {
-    var 
+var get_data_indicator_year = function(indicator_code, year) {
+    // indicator parameters are codes
+    var new_obj = obj[indicator_code];
+
+    var year_value = [];
+    for (var i = 0; i < new_obj.length; i++) {
+        if (new_obj[i]['year'] == year) {
+            year_value = new_obj[i]['values'];
+            break;
+        }
+    }
+
+    return year_value;
 }
 
 var map_country_name_to_codes = function(country_name) {

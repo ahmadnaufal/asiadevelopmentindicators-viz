@@ -1,9 +1,27 @@
+function onReady(callback) {
+    var intervalID = window.setInterval(checkReady, 1000);
+    function checkReady() {
+        var count = 0;
+        for (var k in obj) {
+            ++count;
+        }
+
+        // the number of indicators is 19,
+        // so we wait until all indicators data are loaded
+        if (count == 19) {
+            console.log("READY!");
+            window.clearInterval(intervalID);
+            callback.call(this);
+        }
+    }
+}
+
 window.onload = function() {
     var data_dir = "data";
     load_file("data");  // call function to load data
 };
 
-$(document).ready(function() {
+onReady(function() {
     var indicator_code = "EN.POP.DNST";
     anychart.onDocumentReady(function () {
         map = anychart.map();

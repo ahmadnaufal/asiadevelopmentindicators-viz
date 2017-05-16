@@ -67,7 +67,7 @@ var updateMap = function(indicator_code, year) {
     map.padding(0);
 
     map.title().enabled(true).padding([10, 0, 10, 0]).useHtml(true).text(
-            indicator_code_to_name_map[indicator_code] + '<br/><span  style="color:#929292; font-size: 12px;">(Data source: Kaggle, 2015)</span>');
+            indicator_code_to_name_map[indicator_code] + ' (Year: ' + year + ')<br/><span  style="color:#929292; font-size: 12px;">(Data source: Kaggle, 2015)</span>');
     var ds = get_data_indicator_year(indicator_code, year);
     
     var dataSet = anychart.data.set(ds);

@@ -27,7 +27,7 @@ function loadJSON(callback) {
             callback(xobj.responseText);
         }
     };
-    xobj.send(null);  
+    xobj.send(null);
 }
 
 window.onload = function() {
@@ -69,7 +69,8 @@ var updateMap = function(indicator_code, year) {
     map.title().enabled(true).padding([10, 0, 10, 0]).useHtml(true).text(
             indicator_code_to_name_map[indicator_code] + ' (Year: ' + year + ')<br/><span  style="color:#929292; font-size: 12px;">(Data source: Kaggle, 2015)</span>');
     var ds = get_data_indicator_year(indicator_code, year);
-    
+    var max = get_max_indicator(indicator_code);
+    var min = get_min_indicator(indicator_code);
     var dataSet = anychart.data.set(ds);
     var series = map.choropleth(dataSet);
 
@@ -80,18 +81,24 @@ var updateMap = function(indicator_code, year) {
     series.labels().enabled(false);
     series.tooltip().textWrap('byLetter').useHtml(true);
 
-    var scale = anychart.scales.ordinalColor([
-        {less: 10},
-        {from: 10, to: 30},
-        {from: 30, to: 50},
-        {from: 50, to: 100},
-        {from: 100, to: 200},
-        {from: 200, to: 300},
-        {from: 300, to: 500},
-        {from: 500, to: 1000},
-        {greater: 1000}
-    ]);
+    var scaleArr = [
+        {less: min},
+    ];
+
+    range = (max - min) / 7;
+    for (i=0;i<7;i++) {
+        scaleObj = {};
+        scaleObj.from = Math.round(i * range);
+        scaleObj.to = Math.round((i + 1) * range);
+        scaleArr.push(scaleObj);
+    }
+    scaleArr.push({greater: max});
+    console.log(scaleArr);
+    var scale = anychart.scales.ordinalColor(scaleArr);
     scale.colors(['#81d4fa', '#4fc3f7', '#29b6f6', '#039be5', '#0288d1', '#0277bd', '#01579b', '#014377', '#000000']);
+
+    // var scale = anychart.scales.ordinalColor(scaleArr);
+    // scale.colors(['#81d4fa', '#4fc3f7', '#29b6f6']);
 
     var colorRange = map.colorRange();
     colorRange.enabled(true).padding([0, 0, 20, 0]);

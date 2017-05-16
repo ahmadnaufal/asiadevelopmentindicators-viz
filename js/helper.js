@@ -3,15 +3,17 @@ var indicator_codes = ["AG.LND.TOTL.K2", "EN.POP.DNST", "SP.ADO.TFRT", "SP.DYN.A
 
 var load_file = function(directory) {
     obj = {};
-
+    var max = [9000000,20000,200,300,500,50,12,100,100,100,10,100,100,50,30,100,20,2000000000, 100]
+    var min = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-10,200000,0];
     for (var idx = 0; idx < indicator_codes.length; idx++) {
         var indicator_code = indicator_codes[idx];
         var indicator_file = directory + "/" + indicator_codes[idx] + ".csv";
-
+        
         $.ajax({
             url: indicator_file,
             context: {
-                code : indicator_code
+                code : indicator_code,
+                curr_idx : idx
             },
             success: function(data) {
                 try {
@@ -37,10 +39,11 @@ var load_file = function(directory) {
                                 value : indicator_value
                             });
                         }
-
                         var obj_per_year = {};
                         obj_per_year['year'] = cur_year;
                         obj_per_year['values'] = values_in_year;
+                        obj_per_year['max'] = max[this.curr_idx];
+                        obj_per_year['min'] = min[this.curr_idx];
 
                         // push the results from the year
                         // to the main major results
@@ -75,6 +78,14 @@ var get_data_indicator_year = function(indicator_code, year) {
     }
 
     return year_value;
+}
+
+var get_max_indicator = function(indicator_code) {
+    return obj[indicator_code][0].max;
+}
+
+var get_min_indicator = function(indicator_code) {
+    return obj[indicator_code][0].min;
 }
 
 var get_country_indicator_data = function(country_code, indicator_code) {
@@ -149,7 +160,7 @@ var country_code_to_name_map = {
     "NP" : "nepal",
     "OM" : "oman",
     "PK" : "pakistan",
-    "PH" : "phillipines",
+    "PH" : "philippines",
     "QA" : "qatar",
     "SA" : "saudi arabia",
     "SG" : "singapore",

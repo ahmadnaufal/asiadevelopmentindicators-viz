@@ -16,3 +16,19 @@
   border: solid 1px;
   border-color: #bebebe;
 }
+
+p.center-large {
+	text-align: center;
+	font-size: 1.5em;
+	color: #d9d9db;
+	margin-top: 100px;
+}
+
+.indicator-helper {
+	margin-top: 20px;
+}
+
+.indicator-helper-title {
+	font-weight: bold;
+	margin-bottom: 5px;
+}

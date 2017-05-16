@@ -71,8 +71,7 @@ var updateMap = function(indicator_code, year) {
             ' (Year: ' + year + ')<br/>\
             <p style="color:#929292; font-size: 12px; display: inline-block">\
               (Data source: Kaggle, 2015)\
-            <br/>\
-              Click a country to see the trend </p>'
+            </p>'
             );
     var ds = get_data_indicator_year(indicator_code, year);
     var max = get_max_indicator(indicator_code);
@@ -166,6 +165,7 @@ onReady(function() {
 
     // The data used in this sample can be obtained from the CDN
     // http://cdn.anychart.com/samples-data/maps-general-features/world-choropleth-map/data.js
+    $("#indicator_desc").html(indicator_code_to_desc[init_selected_indicator]);
     updateMap(init_selected_indicator, init_selected_year);
 
     $("#indicator_selector").on('change', function() {
@@ -173,6 +173,7 @@ onReady(function() {
         appendYearPerIndicator(this.value);
         var init_selected_year = $('#year_selector').val();
 
+        $("#indicator_desc").html(indicator_code_to_desc[this.value]);
         updateMap(this.value, init_selected_year);
     });
 

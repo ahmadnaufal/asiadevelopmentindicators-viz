@@ -1,5 +1,5 @@
 var asia_map = null;
-
+var chart = null;
 function onReady(callback) {
     var intervalID = window.setInterval(checkReady, 1000);
     function checkReady() {
@@ -137,7 +137,7 @@ var load_line_chart = function(indicator_code, country) {
     var data = get_data_trend_indicator(indicator_code, country);
 
     // create a chart
-    var chart = anychart.line();
+    chart = anychart.line();
 
     // create a line series and set the data
     var series = chart.line(data);
@@ -170,6 +170,13 @@ onReady(function() {
         console.log("Indicator changed!");
         appendYearPerIndicator(this.value);
         var init_selected_year = $('#year_selector').val();
+
+        if (chart != null) { 
+          chart.dispose();
+          chart = null;
+        }
+        
+        $("#container-line-chart").html("<p class=\"center-large\">Select a country to see its trend.</p>")
 
         $("#indicator_desc").html(indicator_code_to_desc[this.value]);
         updateMap(this.value, init_selected_year);

@@ -131,6 +131,8 @@ var updateMap = function(indicator_code, year) {
         load_line_chart(indicator_code, country_code);
     });
 
+    $("#title-trend").html('Trend of ' + indicator_code_to_name_map[indicator_code]);
+
     $("#container").html('');
     map.container('container');
     map.draw();

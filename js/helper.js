@@ -66,9 +66,6 @@ var get_data_indicator_year = function(indicator_code, year) {
     // indicator parameters are codes
     var new_obj = obj[indicator_code];
 
-    console.log(obj);
-    console.log(new_obj);
-
     var year_value = [];
     for (var i = 0; i < new_obj.length; i++) {
         if (new_obj[i]['year'] == year) {

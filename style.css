@@ -10,3 +10,8 @@
   margin: 0;
   padding: 0;
 }
+
+#container-line-chart {
+	height: 300px;
+	margin-right: 20px;
+}

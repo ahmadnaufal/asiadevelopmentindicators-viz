@@ -146,6 +146,7 @@ var load_line_chart = function(indicator_code, country) {
 
     // create a line series and set the data
     var series = chart.line(data);
+    chart.title(toTitleCase(country_code_to_name_map[country]));
 
     // set the container id
     $("#container-line-chart").html('');

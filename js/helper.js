@@ -241,3 +241,7 @@ var indicator_code_to_name_map = {
     "AG.LND.TOTL.K2" : "Land area (sq. km)",
     "EN.POP.DNST" : "Population density (people per sq. km of land area)",
 };
+
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}

@@ -80,6 +80,29 @@ var get_data_indicator_year = function(indicator_code, year) {
     return year_value;
 }
 
+var get_data_trend_indicator = function(indicator_code, country_code) {
+    var new_obj = obj[indicator_code];
+
+    var nation_values = [];
+    for (var i = 0; i < new_obj.length; i++) {
+        var year = new_obj[i]['year'];
+        var new_value;
+        for (var j = 0; j < new_obj[i]['values'].length; j++) {
+            if (new_obj[i]['values'][j]['id'] == country_code) {
+                new_value = new_obj[i]['values'][j]['value'];
+                break;
+            }
+        }
+
+        nation_values.push({
+            x: year,
+            value: new_value
+        });
+    }
+
+    return nation_values;
+}
+
 var get_max_indicator = function(indicator_code) {
     return obj[indicator_code][0].max;
 }

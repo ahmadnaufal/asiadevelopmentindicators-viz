@@ -120,9 +120,32 @@ var updateMap = function(indicator_code, year) {
 
     series.colorScale(scale);
 
+    map.listen('pointClick', function(e) {
+        var country_code = e.iterator.get("id");
+        var indicator_code = $("#indicator_selector").val();
+        load_line_chart(indicator_code, country_code);
+    });
+
     $("#container").html('');
     map.container('container');
     map.draw();
+}
+
+var load_line_chart = function(indicator_code, country) {
+    var data = get_data_trend_indicator(indicator_code, country);
+
+    // create a chart
+    var chart = anychart.line();
+
+    // create a line series and set the data
+    var series = chart.line(data);
+
+    // set the container id
+    $("#container-line-chart").html('');
+    chart.container("container-line-chart");
+
+    // initiate drawing the chart
+    chart.draw();
 }
 
 onReady(function() {

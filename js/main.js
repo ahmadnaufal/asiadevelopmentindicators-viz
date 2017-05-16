@@ -71,8 +71,7 @@ var updateMap = function(indicator_code, year) {
             ' (Year: ' + year + ')<br/>\
             <p style="color:#929292; font-size: 12px; display: inline-block">\
               (Data source: Kaggle, 2015)\
-            <br/>\
-              Click a country to see the trend </p>'
+            </p>'
             );
     var ds = get_data_indicator_year(indicator_code, year);
     var max = get_max_indicator(indicator_code);
@@ -80,14 +79,7 @@ var updateMap = function(indicator_code, year) {
     var dataSet = anychart.data.set(ds);
     var series = map.choropleth(dataSet);
 
-    series.hoverFill('#91ff23');
-    series.hoverStroke('white');
-    series.labels().enabled(false);
-    series.tooltip().textWrap('byLetter').useHtml(true);
-    series.stroke('white');
-
     var scaleArr = [
-        {less: min},
     ];
 
     range = (max - min) / 7;
@@ -97,13 +89,16 @@ var updateMap = function(indicator_code, year) {
         scaleObj.to = Math.round((i + 1) * range);
         scaleArr.push(scaleObj);
     }
-    scaleArr.push({greater: max});
     console.log(scaleArr);
     var scale = anychart.scales.ordinalColor(scaleArr);
-    scale.colors(['#81d4fa', '#4fc3f7', '#29b6f6', '#039be5', '#0288d1', '#0277bd', '#01579b', '#014377', '#003159']);
+    scale.colors(['#4fc3f7', '#29b6f6', '#039be5', '#0288d1', '#0277bd', '#01579b', '#014377']);
 
-    // var scale = anychart.scales.ordinalColor(scaleArr);
-    // scale.colors(['#81d4fa', '#4fc3f7', '#29b6f6']);
+
+    series.hoverFill(anychart.color.darken("#ff0000", 0.5));
+    series.hoverStroke('white');
+    series.labels().enabled(false);
+    series.tooltip().textWrap('byLetter').useHtml(true);
+    series.stroke('white');
 
     var colorRange = map.colorRange();
     colorRange.enabled(true).padding([0, 0, 20, 0]);
@@ -168,6 +163,7 @@ onReady(function() {
 
     // The data used in this sample can be obtained from the CDN
     // http://cdn.anychart.com/samples-data/maps-general-features/world-choropleth-map/data.js
+    $("#indicator_desc").html(indicator_code_to_desc[init_selected_indicator]);
     updateMap(init_selected_indicator, init_selected_year);
 
     $("#indicator_selector").on('change', function() {
@@ -175,6 +171,7 @@ onReady(function() {
         appendYearPerIndicator(this.value);
         var init_selected_year = $('#year_selector').val();
 
+        $("#indicator_desc").html(indicator_code_to_desc[this.value]);
         updateMap(this.value, init_selected_year);
     });
 

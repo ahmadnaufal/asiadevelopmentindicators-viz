@@ -1,3 +1,5 @@
+var asia_map = null;
+
 function onReady(callback) {
     var intervalID = window.setInterval(checkReady, 1000);
     function checkReady() {
@@ -8,16 +10,32 @@ function onReady(callback) {
 
         // the number of indicators is 19,
         // so we wait until all indicators data are loaded
-        if (count == 19) {
+        if (count == 19 && asia_map != null) {
             window.clearInterval(intervalID);
             callback.call(this);
         }
     }
 }
 
+function loadJSON(callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'js/asia.geojson', true); // Replace 'my_data' with the path to your file
+    xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+            callback(xobj.responseText);
+        }
+    };
+    xobj.send(null);  
+}
+
 window.onload = function() {
     var data_dir = "data";
     load_file("data");  // call function to load data
+    loadJSON(function(response) {
+        asia_map = JSON.parse(response);
+    });
 };
 
 function appendIndicatorOptions() {
@@ -44,7 +62,7 @@ function appendYearPerIndicator(indicator_code) {
 var updateMap = function(indicator_code, year) {
 
     map = anychart.map();
-    map.geoData(anychart.maps.world);
+    map.geoData(asia_map);
     map.interactivity().selectionMode(false);
     map.padding(0);
 
@@ -90,7 +108,7 @@ var updateMap = function(indicator_code, year) {
         } else {
             name = 'Less than ' + range.end;
         }
-        return name
+        return name;
     });
 
     series.colorScale(scale);

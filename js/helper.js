@@ -20,7 +20,7 @@ var load_file = function(directory) {
                     var column_headers = csv_processed[0];
 
                     var indicator_obj = [];
-                    
+
                     // the first row defines the csv header column names
                     for (var i = first_idx; i < csv_processed.length; ++i) {
                         // get the year
@@ -104,15 +104,15 @@ var get_country_indicator_data = function(country_code, indicator_code) {
 }
 
 var map_country_name_to_codes = function(country_name) {
-	var country_code = "";
+    var country_code = "";
 
     for (var k in country_code_to_name_map) {
         if (country_code_to_name_map[k] == country_name.toLowerCase()) {
             country_code = k;
         }
     }
-	
-	return country_code;
+
+    return country_code;
 }
 
 var country_code_to_name_map = {
@@ -164,32 +164,36 @@ var country_code_to_name_map = {
     "VN" : "vietnam",
     "YE" : "yemen, rep."
 };
+var indicator_code_to_desc = {
+    "SP.ADO.TFRT" : "Shows the burden of fertility on young women.",
+    "SP.DYN.CBRT.IN" : "Shows the number of live births per thousand of population per year.",
+    "SP.DYN.CDRT.IN" : "Shows the ratio of deaths to the population of a particular area",
+    "SP.DYN.TFRT.IN" : "Shows average number of children that would be born to a woman over her lifetime",
+    "SP.DYN.LE00.FE.IN" : "Measure of the average time a female is expected to live",
+    "SP.DYN.LE00.MA.IN" : "Measure of the average time a male is expected to live",
+    "SP.DYN.LE00.IN" : "Measure of the average time a people is expected to live",
+    "SP.DYN.AMRT.FE" : "Measure of the number of deaths for adult female",
+    "SP.DYN.AMRT.MA" : "Measure of the number of deaths for adult male",
+    "SP.POP.65UP.TO.ZS" : "Shows the proportion of people in certain age range (> 65) on the total population of the country.",
+    "SP.POP.GROW" : "Population growth is the increase in the number of individuals in a population. The growth calculated in this chart is the annual growth of each countries.",
+    "SP.POP.0014.TO.ZS" : "Shows the proportion of people in certain age range (0-14) on the total population of the country.",
+    "SP.POP.1564.TO.ZS" : "Shows the proportion of people in certain age range (15-64) on the total population of the country.",
+    "SP.POP.TOTL.FE.ZS" : "Shows the proportion of the female population on the total population of the country.",
+    "SP.POP.TOTL" : "The total population of the country.",
+    "SP.DYN.TO65.FE.ZS" : "The total of female population which reaches the age 65 compared to their peers who were born at the same year.",
+    "SP.DYN.TO65.MA.ZS" : "The total of male population which reaches the age 65 compared to their peers who were born at the same year.",
+    "AG.LND.TOTL.K2" : "The aggregate of all land within international boundaries and coastlines, excluding water area.",
+    "EN.POP.DNST" : "A measurement of population per unit area or unit volume, in this case, of the land area",
+};
 
 var indicator_code_to_name_map = {
     "SP.ADO.TFRT" : "Adolescent fertility rate (births per 1,000 women ages 15-19)",
-    "SP.POP.DPND" : "Age dependency ratio (% of working-age population)",
-    "SP.POP.DPND.OL" : "Age dependency ratio, old (% of working-age population)",
-    "SP.POP.DPND.YG" : "Age dependency ratio, young (% of working-age population)",
     "SP.DYN.CBRT.IN" : "Birth rate, crude (per 1,000 people)",
-    "EN.ATM.CO2E.KT" : "CO2 emissions (kt)",
-    "EN.ATM.CO2E.PC" : "CO2 emissions (metric tons per capita)",
-    "EN.ATM.CO2E.GF.ZS" : "CO2 emissions from gaseous fuel consumption (% of total)",
-    "EN.ATM.CO2E.GF.KT" : "CO2 emissions from gaseous fuel consumption (kt)",
-    "EN.ATM.CO2E.LF.ZS" : "CO2 emissions from liquid fuel consumption (% of total)",
-    "EN.ATM.CO2E.LF.KT" : "CO2 emissions from liquid fuel consumption (kt)",
-    "EN.ATM.CO2E.SF.ZS" : "CO2 emissions from solid fuel consumption (% of total)",
-    "EN.ATM.CO2E.SF.KT" : "CO2 emissions from solid fuel consumption (kt)",
     "SP.DYN.CDRT.IN" : "Death rate, crude (per 1,000 people)",
     "SP.DYN.TFRT.IN" : "Fertility rate, total (births per woman)",
-    "IT.MLT.MAIN" : "Fixed telephone subscriptions",
-    "IT.MLT.MAIN.P2" : "Fixed telephone subscriptions (per 100 people)",
     "SP.DYN.LE00.FE.IN" : "Life expectancy at birth, female (years)",
     "SP.DYN.LE00.MA.IN" : "Life expectancy at birth, male (years)",
     "SP.DYN.LE00.IN" : "Life expectancy at birth, total (years)",
-    "TX.VAL.MRCH.CD.WT" : "Merchandise exports (current US$)",
-    "TM.VAL.MRCH.CD.WT" : "Merchandise imports (current US$)",
-    "IT.CEL.SETS" : "Mobile cellular subscriptions",
-    "IT.CEL.SETS.P2" : "Mobile cellular subscriptions (per 100 people)",
     "SP.DYN.AMRT.FE" : "Mortality rate, adult, female (per 1,000 female adults)",
     "SP.DYN.AMRT.MA" : "Mortality rate, adult, male (per 1,000 male adults)",
     "SP.POP.65UP.TO.ZS" : "Population ages 65 and above (% of total)",
@@ -198,59 +202,8 @@ var indicator_code_to_name_map = {
     "SP.POP.1564.TO.ZS" : "Population, ages 15-64 (% of total)",
     "SP.POP.TOTL.FE.ZS" : "Population, female (% of total)",
     "SP.POP.TOTL" : "Population, total",
-    "SP.RUR.TOTL" : "Rural population",
-    "SP.RUR.TOTL.ZS" : "Rural population (% of total population)",
     "SP.DYN.TO65.FE.ZS" : "Survival to age 65, female (% of cohort)",
     "SP.DYN.TO65.MA.ZS" : "Survival to age 65, male (% of cohort)",
-    "SP.URB.TOTL" : "Urban population",
-    "SP.URB.TOTL.IN.ZS" : "Urban population (% of total)",
-    "SP.URB.GROW" : "Urban population growth (annual %)",
-    "AG.PRD.CROP.XD" : "Crop production index (2004-2006 = 100)",
-    "AG.PRD.FOOD.XD" : "Food production index (2004-2006 = 100)",
     "AG.LND.TOTL.K2" : "Land area (sq. km)",
-    "AG.PRD.LVSK.XD" : "Livestock production index (2004-2006 = 100)",
     "EN.POP.DNST" : "Population density (people per sq. km of land area)",
-    "AG.SRF.TOTL.K2" : "Surface area (sq. km)",
-    "NY.ADJ.DCO2.CD" : "Adjusted savings: carbon dioxide damage (current US$)",
-    "NY.ADJ.DMIN.CD" : "Adjusted savings: mineral depletion (current US$)",
-    "SE.SEC.AGES" : "Official entrance age to lower secondary education (years)",
-    "SE.PRM.AGES" : "Official entrance age to primary education (years)",
-    "SE.PRM.DURS" : "Theoretical duration of primary education (years)",
-    "SE.SEC.DURS" : "Theoretical duration of secondary education (years)",
-    "TX.VAL.MRCH.XD.WD" : "Export value index (2000 = 100)",
-    "TM.VAL.MRCH.XD.WD" : "Import value index (2000 = 100)",
-    "SH.TBS.INCD" : "Incidence of tuberculosis (per 100,000 people)",
-    "IT.NET.USER.P2" : "Internet users (per 100 people)",
-    "SL.TLF.ACTI.1524.FE.ZS" : "Labor force participation rate for ages 15-24, female (%) (modeled ILO estimate)",
-    "SL.TLF.ACTI.1524.MA.ZS" : "Labor force participation rate for ages 15-24, male (%) (modeled ILO estimate)",
-    "SL.TLF.ACTI.1524.ZS" : "Labor force participation rate for ages 15-24, total (%) (modeled ILO estimate)",
-    "SL.TLF.CACT.FE.ZS" : "Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)",
-    "SL.TLF.ACTI.FE.ZS" : "Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)",
-    "SL.TLF.CACT.MA.ZS" : "Labor force participation rate, male (% of male population ages 15+) (modeled ILO estimate)",
-    "SL.TLF.ACTI.MA.ZS" : "Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)",
-    "SL.TLF.CACT.ZS" : "Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)",
-    "SL.TLF.ACTI.ZS" : "Labor force participation rate, total (% of total population ages 15-64) (modeled ILO estimate)",
-    "SL.TLF.TOTL.FE.ZS" : "Labor force, female (% of total labor force)",
-    "SL.TLF.TOTL.IN" : "Labor force, total",
-    "SL.TLF.CACT.FM.ZS" : "Ratio of female to male labor force participation rate (%) (modeled ILO estimate)",
-    "SH.TBS.DTEC.ZS" : "Tuberculosis case detection rate (%, all forms)",
-    "SL.EMP.TOTL.SP.FE.ZS" : "Employment to population ratio, 15+, female (%) (modeled ILO estimate)",
-    "SL.EMP.TOTL.SP.MA.ZS" : "Employment to population ratio, 15+, male (%) (modeled ILO estimate)",
-    "SL.EMP.TOTL.SP.ZS" : "Employment to population ratio, 15+, total (%) (modeled ILO estimate)",
-    "SL.EMP.1524.SP.FE.ZS" : "Employment to population ratio, ages 15-24, female (%) (modeled ILO estimate)",
-    "SL.EMP.1524.SP.MA.ZS" : "Employment to population ratio, ages 15-24, male (%) (modeled ILO estimate)",
-    "SL.EMP.1524.SP.ZS" : "Employment to population ratio, ages 15-24, total (%) (modeled ILO estimate)",
-    "SL.UEM.TOTL.FE.ZS" : "Unemployment, female (% of female labor force)",
-    "SL.UEM.TOTL.MA.ZS" : "Unemployment, male (% of male labor force)",
-    "SL.UEM.TOTL.ZS" : "Unemployment, total (% of total labor force)",
-    "SL.UEM.1524.FE.ZS" : "Unemployment, youth female (% of female labor force ages 15-24) (modeled ILO estimate)",
-    "SL.UEM.1524.MA.ZS" : "Unemployment, youth male (% of male labor force ages 15-24) (modeled ILO estimate)",
-    "SL.UEM.1524.ZS" : "Unemployment, youth total (% of total labor force ages 15-24) (modeled ILO estimate)",
-    "SH.TBS.CURE.ZS" : "Tuberculosis treatment success rate (% of new cases)",
-    "TX.QTY.MRCH.XD.WD" : "Export volume index (2000 = 100)",
-    "TM.QTY.MRCH.XD.WD" : "Import volume index (2000 = 100)",
-    "TT.PRI.MRCH.XD.WD" : "Net barter terms of trade index (2000 = 100)",
-    "BX.KLT.DINV.CD.WD" : "Foreign direct investment, net inflows (BoP, current US$)",
-    "SM.POP.REFG.OR" : "Refugee population by country or territory of origin",
-    "NY.ADJ.DNGY.CD" : "Adjusted savings: energy depletion (current US$)"
 };

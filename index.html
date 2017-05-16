@@ -15,48 +15,61 @@
     <script type="text/javascript" src="js/helper.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 
-    <title>World Development Indicators</title>
+    <title>Asia Development Indicators</title>
   </head>
   <body>
-    <div class="row">
-      <div class="col-sm-12">
-        <h1 class="title text-center">World Development Indicators</>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-6">
-        <div id="container"></div>
-      </div>
-      <div class="col-md-4">
+    <section id="introduction" class="full-page">
+      <div class="container">
         <div class="row">
-          <div class="col-sm-8">
-            <label for="indicator_selector">Indicator Name</label>
-            <select id="indicator_selector" class="form-control" name="indicator_code"></select>
-          </div>
-          <div class="col-sm-3">
-            <label for="year_selector">Year</label>
-            <select id="year_selector" class="form-control" name="year"></select>
+          <div class="main-part">
+            <h1 class="introduction-title">Asia Population Development Indicators</h1>
+            <p class="introduction-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mihi enim satis est, ipsis non satis. Illum mallem levares, quo optimum atque humanissimum virum, Cn. Et non ex maxima parte de tota iudicabis? Profectus in exilium Tubulus statim nec respondere ausus;</p>
+            <a class="btn btn-primary" id="button_to_viz" href="#visualization">Continue to Visualization</a>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="indicator-helper">
-              <h5 class="indicator-helper-title">Indicator Description</h5>
-              <p id="indicator_desc"></p>
+      </div>
+    </section>
+    <section id="visualization" class="full-page">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="title text-center">Asia Development Indicators</>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+          <div id="container"></div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-sm-8">
+              <label for="indicator_selector">Indicator Name</label>
+              <select id="indicator_selector" class="form-control" name="indicator_code"></select>
+            </div>
+            <div class="col-sm-3">
+              <label for="year_selector">Year</label>
+              <select id="year_selector" class="form-control" name="year"></select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="indicator-helper">
+                <h5 class="indicator-helper-title">Indicator Description</h5>
+                <p id="indicator_desc"></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 id="title-trend">[Title] Trends</h3>
+              <div id="container-line-chart">
+                <p class="center-large">Select a country to see its trend.</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <h3 id="title-trend">[Title] Trends</h3>
-            <div id="container-line-chart">
-              <p class="center-large">Select a country to see its trend.</p>
-            </div>
-          </div>
-        </div>
+        <div class="col-md-1"></div>
       </div>
-      <div class="col-md-1"></div>
-    </div>
+    </section>
   </body>
 </html>

@@ -95,7 +95,7 @@ var updateMap = function(indicator_code, year) {
     scaleArr.push({greater: max});
     console.log(scaleArr);
     var scale = anychart.scales.ordinalColor(scaleArr);
-    scale.colors(['#81d4fa', '#4fc3f7', '#29b6f6', '#039be5', '#0288d1', '#0277bd', '#01579b', '#014377', '#000000']);
+    scale.colors(['#81d4fa', '#4fc3f7', '#29b6f6', '#039be5', '#0288d1', '#0277bd', '#01579b', '#014377', '#003159']);
 
     // var scale = anychart.scales.ordinalColor(scaleArr);
     // scale.colors(['#81d4fa', '#4fc3f7', '#29b6f6']);

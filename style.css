@@ -1,0 +1,12 @@
+.title {
+  font-family: 'Oswald', sans-serif;
+}
+
+#container {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 80vh;
+  margin: 0;
+  padding: 0;
+}

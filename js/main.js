@@ -67,7 +67,13 @@ var updateMap = function(indicator_code, year) {
     map.padding(0);
 
     map.title().enabled(true).padding([10, 0, 10, 0]).useHtml(true).text(
-            indicator_code_to_name_map[indicator_code] + ' (Year: ' + year + ')<br/><span  style="color:#929292; font-size: 12px;">(Data source: Kaggle, 2015)</span>');
+            indicator_code_to_name_map[indicator_code] + 
+            ' (Year: ' + year + ')<br/>\
+            <p style="color:#929292; font-size: 12px; display: inline-block">\
+              (Data source: Kaggle, 2015)\
+            <br/>\
+              Click a country to see the trend </p>'
+            );
     var ds = get_data_indicator_year(indicator_code, year);
     var max = get_max_indicator(indicator_code);
     var min = get_min_indicator(indicator_code);
@@ -80,6 +86,7 @@ var updateMap = function(indicator_code, year) {
     series.selectStroke(anychart.color.darken('#c2185b'));
     series.labels().enabled(false);
     series.tooltip().textWrap('byLetter').useHtml(true);
+    series.stroke('white');
 
     var scaleArr = [
         {less: min},

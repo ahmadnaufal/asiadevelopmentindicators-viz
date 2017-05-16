@@ -80,10 +80,8 @@ var updateMap = function(indicator_code, year) {
     var dataSet = anychart.data.set(ds);
     var series = map.choropleth(dataSet);
 
-    series.hoverFill('#f48fb1');
-    series.hoverStroke(anychart.color.darken('#f48fb1'));
-    series.selectFill('#c2185b');
-    series.selectStroke(anychart.color.darken('#c2185b'));
+    series.hoverFill('#91ff23');
+    series.hoverStroke('white');
     series.labels().enabled(false);
     series.tooltip().textWrap('byLetter').useHtml(true);
     series.stroke('white');

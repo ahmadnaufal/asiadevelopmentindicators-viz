@@ -12,10 +12,17 @@
 }
 
 #container-line-chart {
-  height: 250px;
-  margin-right: 20px;
+  height: 220px;
+  text-align:center;
+}
+
+#trend-container {
   border: solid 1px;
   border-color: #bebebe;
+}
+
+#country-selector {
+  margin: 1em;
 }
 
 #title-trend {
@@ -26,7 +33,9 @@ p.center-large {
   text-align: center;
   font-size: 1.5em;
   color: #d9d9db;
-  margin-top: 100px;
+  position: absolute;
+  top: 40%;
+  width: 100%;
 }
 
 .indicator-helper {

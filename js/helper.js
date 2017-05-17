@@ -3,8 +3,8 @@ var indicator_codes = ["AG.LND.TOTL.K2", "EN.POP.DNST", "SP.ADO.TFRT", "SP.DYN.A
 
 var load_file = function(directory) {
     obj = {};
-    var max = [10000000,20000,200,300,500,50,12,100,100,100,10,100,100,50,30,100,20,2000000000, 100]
-    var min = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-10,200000,0];
+    var max = [10000000,1200,200,300,500,50,12,100,100,100,10,100,100,50,30,100,18,2000000000, 100]
+    var min = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-3,200000,0];
     for (var idx = 0; idx < indicator_codes.length; idx++) {
         var indicator_code = indicator_codes[idx];
         var indicator_file = directory + "/" + indicator_codes[idx] + ".csv";

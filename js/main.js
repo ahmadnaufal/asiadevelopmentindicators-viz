@@ -63,7 +63,7 @@ var updateMap = function(indicator_code, year) {
 
     map = anychart.map();
     map.geoData(asia_map);
-    map.interactivity().selectionMode(false);
+    map.interactivity().selectionMode(true);
     map.padding(0);
 
     map.title().enabled(true).padding([10, 0, 10, 0]).useHtml(true).text(
@@ -79,17 +79,17 @@ var updateMap = function(indicator_code, year) {
     var dataSet = anychart.data.set(ds);
     var series = map.choropleth(dataSet);
 
+    range = (max - min) / 7;
     var scaleArr = [
+    {from: min, to: Math.round(range)}
     ];
 
-    range = (max - min) / 7;
-    for (i=0;i<7;i++) {
+    for (i=1;i<7;i++) {
         scaleObj = {};
-        scaleObj.from = Math.round(i * range);
-        scaleObj.to = Math.round((i + 1) * range);
+        scaleObj.from = Math.round(i * range) + min;
+        scaleObj.to = Math.round((i + 1) * range) + min;
         scaleArr.push(scaleObj);
     }
-    console.log(scaleArr);
     var scale = anychart.scales.ordinalColor(scaleArr);
     scale.colors(['#4fc3f7', '#29b6f6', '#039be5', '#0288d1', '#0277bd', '#01579b', '#014377']);
 
@@ -127,6 +127,9 @@ var updateMap = function(indicator_code, year) {
     });
 
     $("#title-trend").html('Trend of ' + indicator_code_to_name_map[indicator_code]);
+
+    var zoomController = anychart.ui.zoom();
+    zoomController.render(map);
 
     $("#container").html('');
     map.container('container');

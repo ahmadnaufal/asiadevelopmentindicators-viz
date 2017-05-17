@@ -3,6 +3,27 @@
   margin-bottom: 1em;
 }
 
+.introduction-title {
+	font-family: 'Oswald', sans-serif;
+	font-size: 3em;
+	text-align: center;
+}
+
+.main-part {
+	text-align: center;
+	margin-top: 30vh;
+}
+
+.introduction-desc {
+	margin-top:30px;
+	padding-left:30px;
+	padding-right:30px;
+}
+
+#button_to_viz {
+	margin-top: 150px;
+}
+	
 #container {
   position: relative;
   display: block;
@@ -45,4 +66,8 @@ p.center-large {
 .indicator-helper-title {
   font-weight: bold;
   margin-bottom: 5px;
+}
+
+.full-page {
+	height: 100vh;
 }

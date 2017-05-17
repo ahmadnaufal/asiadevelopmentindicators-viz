@@ -192,3 +192,12 @@ onReady(function() {
         updateMap(init_selected_indicator, this.value);
     });
 });
+
+
+$(document).on('click', 'a', function(event){
+    event.preventDefault();
+
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+});

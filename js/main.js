@@ -59,6 +59,15 @@ function appendYearPerIndicator(indicator_code) {
     }
 }
 
+function appendCountries(id_select) {
+    for (var country_code in country_code_to_name_map) {
+        $(id_select).append($('<option>', {
+            value: country_code,
+            text: toTitleCase(country_code_to_name_map[country_code])
+        }));
+    }
+}
+
 var updateMap = function(indicator_code, year) {
 
     map = anychart.map();
@@ -70,7 +79,7 @@ var updateMap = function(indicator_code, year) {
             indicator_code_to_name_map[indicator_code] + 
             ' (Year: ' + year + ')<br/>\
             <p style="color:#929292; font-size: 12px; display: inline-block">\
-              (Data source: Kaggle, 2015)\
+              (Data source: World Bank, 2015)\
             </p>'
             );
     var ds = get_data_indicator_year(indicator_code, year);
@@ -144,7 +153,9 @@ var load_line_chart = function(indicator_code, country) {
 
     // create a line series and set the data
     var series = chart.line(data);
+    series.name(toTitleCase(country_code_to_name_map[country]));
     chart.title(toTitleCase(country_code_to_name_map[country]));
+    chart.legend(true);
 
     // set the container id
     $("#container-line-chart").html('');
@@ -175,8 +186,11 @@ onReady(function() {
         var init_selected_year = $('#year_selector').val();
 
         if (chart != null) { 
-          chart.dispose();
-          chart = null;
+            chart.dispose();
+            chart = null;
+
+            $("#c2_selector").html('');
+            $("#c3_selector").html('');
         }
         
         $("#container-line-chart").html("<p class=\"center-large\">Select a country to see its trend.</p>")
@@ -190,6 +204,41 @@ onReady(function() {
         var init_selected_indicator = $('#indicator_selector').val();
 
         updateMap(init_selected_indicator, this.value);
+    });
+
+    appendCountries("#c1_selector");
+    $("#c1_selector").on('change', function() {
+        if (chart != null) { 
+            var init_selected_indicator = $('#indicator_selector').val();
+
+            var data = get_data_trend_indicator(init_selected_indicator, this.value);
+            var series_new = chart.line(data);
+            series_new.name(toTitleCase(country_code_to_name_map[this.value]));
+
+            appendCountries("#c2_selector");
+        }
+    });
+
+    $("#c2_selector").on('change', function() {
+        if (chart != null) { 
+            var init_selected_indicator = $('#indicator_selector').val();
+
+            var data = get_data_trend_indicator(init_selected_indicator, this.value);
+            var series_new = chart.line(data);
+            series_new.name(toTitleCase(country_code_to_name_map[this.value]));
+
+            appendCountries("#c3_selector");
+        }
+    });
+
+    $("#c3_selector").on('change', function() {
+        if (chart != null) { 
+            var init_selected_indicator = $('#indicator_selector').val();
+
+            var data = get_data_trend_indicator(init_selected_indicator, this.value);
+            var series_new = chart.line(data);
+            series_new.name(toTitleCase(country_code_to_name_map[this.value]));
+        }
     });
 });
 
